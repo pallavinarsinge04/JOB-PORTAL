@@ -1,25 +1,22 @@
-const router = require("express").Router();
-const Job = require("../models/Job");
+// Update Job
+router.put(
+  "/update/:id",
+  async (req, res) => {
 
-router.post("/", async (req, res) => {
-  try {
-    const newJob = new Job(req.body);
-    const savedJob = await newJob.save();
+    try {
 
-    res.json(savedJob);
-  } catch (err) {
-    res.status(500).json(err);
+      await Job.findByIdAndUpdate(
+        req.params.id,
+        req.body
+      );
+
+      res.json({
+        message:
+        "Job Updated Successfully",
+      });
+
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
-});
-
-router.get("/", async (req, res) => {
-  try {
-    const jobs = await Job.find();
-
-    res.json(jobs);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-module.exports = router;
+);
