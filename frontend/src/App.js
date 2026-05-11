@@ -4,6 +4,10 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import {
+  useEffect,
+  useState,
+} from "react";
 import Chat
 from "./pages/Chat";
 import {
@@ -259,10 +263,10 @@ function Home() {
 
   return (
 
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
 
       {/* Navbar */}
-      <nav className="bg-blue-600 text-white p-4 flex justify-between items-center shadow">
+      <nav className="bg-blue-600 dark:bg-black text-white p-4 flex justify-between items-center shadow">
 
         <h1 className="text-3xl font-bold">
 
@@ -275,7 +279,7 @@ function Home() {
           {/* Login */}
           <Link to="/login">
 
-            <button className="bg-white text-blue-600 px-4 py-2 rounded font-semibold">
+            <button className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
 
               Login
 
@@ -287,7 +291,7 @@ function Home() {
           {/* Register */}
           <Link to="/register">
 
-            <button className="bg-black text-white px-4 py-2 rounded font-semibold">
+            <button className="bg-black dark:bg-gray-950 text-white px-4 py-2 rounded font-semibold">
 
               Register
 
@@ -378,6 +382,15 @@ function Home() {
               </Link>
             )
           }
+          <Link to="/chat">
+
+  <button className="bg-indigo-500 text-white px-4 py-2 rounded font-semibold">
+
+    Chat
+
+  </button>
+
+</Link>
 
 
           {/* Logout */}
@@ -405,6 +418,23 @@ function Home() {
             Logout
 
           </button>
+          <button
+  onClick={() =>
+    setDarkMode(
+      !darkMode
+    )
+  }
+
+  className="bg-gray-200 dark:bg-gray-800text-white px-4 py-2 rounded"
+>
+
+  {
+    darkMode
+    ? "Light Mode"
+    : "Dark Mode"
+  }
+
+</button>
 
         </div>
 
@@ -444,7 +474,7 @@ function Home() {
               )
             }
 
-            className="p-3 rounded border"
+            className="p-3 rounded border dark:bg-gray-700 dark:border-gray-600"
           />
 
 
@@ -458,7 +488,7 @@ function Home() {
               )
             }
 
-            className="p-3 rounded border"
+            className="p-3 rounded border dark:bg-gray-700 dark:border-gray-600"
           />
 
         </div>
@@ -552,7 +582,7 @@ function Home() {
 
 
       {/* Footer */}
-      <footer className="bg-black text-white text-center p-4">
+      <footer className="bg-black dark:bg-gray-950 text-white text-center p-4">
 
         © 2026 Job Portal.
         All rights reserved.
@@ -566,7 +596,25 @@ function Home() {
 
 
 function App() {
+const [darkMode,
+setDarkMode] =
+useState(false);
+useEffect(() => {
 
+  if (darkMode) {
+
+    document.documentElement.classList.add(
+      "dark"
+    );
+
+  } else {
+
+    document.documentElement.classList.remove(
+      "dark"
+    );
+  }
+
+}, [darkMode]);
   return (
 
     <BrowserRouter>
