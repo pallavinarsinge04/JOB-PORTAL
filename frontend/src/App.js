@@ -4,17 +4,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import {
-  useEffect,
-  useState,
-} from "react";
-import Chat
-from "./pages/Chat";
-import {
-  useEffect,
-  useState,
-} from "react";
-
+import React, {useState,useEffect,} from "react";
+import Chat from "./pages/Chat";
 import axios from "axios";
 import Companies from "./pages/Companies";
 import Login from "./pages/Login";
