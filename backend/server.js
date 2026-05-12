@@ -7,6 +7,9 @@ require("mongoose");
 const cors =
 require("cors");
 
+const companyRoutes =
+require("./routes/companyRoutes");
+
 require("dotenv").config();
 
 
@@ -49,7 +52,10 @@ app.use(
   express.static("uploads")
 );
 
-
+app.use(
+  "/api/companies",
+  companyRoutes
+);
 // ==========================
 // MongoDB Connection
 // ==========================

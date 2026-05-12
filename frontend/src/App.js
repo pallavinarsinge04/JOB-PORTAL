@@ -16,7 +16,7 @@ import {
 } from "react";
 
 import axios from "axios";
-
+import Companies from "./pages/Companies";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import EmployerDashboard from "./pages/EmployerDashboard";
@@ -26,7 +26,7 @@ import EditJob from "./pages/EditJob";
 import Profile from "./pages/Profile";
 import SavedJobs from "./pages/SavedJobs";
 import Notifications from "./pages/Notifications";
-
+import CompanyDetails from "./pages/CompanyDetails";
 import ProtectedRoute
 from "./components/ProtectedRoute";
 
@@ -418,6 +418,15 @@ function Home() {
             Logout
 
           </button>
+          <Link to="/companies">
+
+  <button className="bg-teal-500 text-white px-4 py-2 rounded">
+
+    Companies
+
+  </button>
+
+</Link>
           <button
   onClick={() =>
     setDarkMode(
@@ -640,6 +649,10 @@ useEffect(() => {
           path="/register"
           element={<Register />}
         />
+        <Route
+  path="/companies"
+  element={<Companies />}
+/>
 
 
         {/* Employer */}
@@ -748,6 +761,10 @@ useEffect(() => {
 
     </ProtectedRoute>
   }
+/>
+<Route
+  path="/company/:id"
+  element={<CompanyDetails />}
 />
 
     </BrowserRouter>
